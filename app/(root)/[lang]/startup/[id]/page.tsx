@@ -89,7 +89,9 @@ const page = async ({
               <img
                 src={post.author.image}
                 alt="avatar"
-                className="rounded-full drop-shadow-lg w-12 h-12"
+                width={64}
+                height={64}
+                className="rounded-full drop-shadow-lg "
               />
 
               <div>

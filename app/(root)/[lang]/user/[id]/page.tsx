@@ -3,7 +3,6 @@ import { StartupCardSkeleton } from "@/components/ui/StartupCardSkeleton";
 import UserStartups from "@/components/User/UserStartups";
 import { client } from "@/sanity/lib/client";
 import { AUTHOR_BY_ID_QUERY } from "@/sanity/lib/queries";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import React, { Suspense } from "react";
 
@@ -61,7 +60,7 @@ const page = async ({
             </h3>
           </div>
 
-          <Image
+          <img
             src={user.image}
             alt={t.altProfile}
             width={220}
