@@ -5,7 +5,7 @@ const layout = async ({
   children,
   params,
 }: Readonly<{ children: React.ReactNode; params: { lang: "en" | "ar" } }>) => {
-  const lang = (await params)?.lang; // Default to Arabic if no lang parameter
+  const lang = params.lang;
 
   return (
     <main className="font-work-sans">
