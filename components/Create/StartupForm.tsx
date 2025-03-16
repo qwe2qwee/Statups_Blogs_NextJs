@@ -198,6 +198,8 @@ const StartupForm = ({ lang }: { lang: "ar" | "en" }) => {
     status: "INITIAL",
   });
 
+  console.log(state);
+
   return (
     <>
       <form action={formAction} className="startup-form">

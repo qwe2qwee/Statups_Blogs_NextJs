@@ -11,7 +11,7 @@ const Navbar = async ({ lang }: { lang: "en" | "ar" }) => {
         <Link href="/">
           <Image src="/logo.png" alt="logo" width={144} height={30} />
         </Link>
-        <NavbarButtons session={session} lang={lang as any} />
+        <NavbarButtons session={session} lang={lang} />
         {/* Pass session to client component */}
       </nav>
     </header>

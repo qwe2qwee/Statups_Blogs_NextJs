@@ -68,7 +68,6 @@ const page = async ({
             height={220}
             className="profile_image"
           />
-
           <p className="text-30-extrabold mt-7 text-center">
             @{user?.username}
           </p>

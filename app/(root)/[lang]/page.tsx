@@ -61,7 +61,7 @@ export default async function Home({
     <>
       <section className="pink_container">
         <h1 className="heading">
-          {t.heading.split("\n").map((line: any, index: any) => (
+          {t.heading.split("\n").map((line: string, index: number) => (
             <span key={index}>
               {line}
               <br />
