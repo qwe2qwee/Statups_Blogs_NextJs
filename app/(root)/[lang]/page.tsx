@@ -7,13 +7,13 @@ export default async function Home({
   searchParams,
   params,
 }: {
-  searchParams: { query?: string };
-  params: { lang: "en" | "ar" }; // Changed from Promise-based structure
+  searchParams: Promise<{ query?: string }>;
+  params: Promise<{ lang: "en" | "ar" }>; // Changed from Promise-based structure
 }) {
-  const query = searchParams.query;
-  const lang = params.lang;
-
+  const query = (await searchParams)?.query;
   const paramss = { search: query || null };
+
+  const lang = (await params)?.lang; // Default to Arabic if no lang parameter
 
   const { data: posts } = await sanityFetch({
     query: STARTUPS_QUERY,
