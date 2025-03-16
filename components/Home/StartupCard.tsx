@@ -46,7 +46,7 @@ export const StartupCard = ({
           </Link>
         </div>
         <Link href={`/${lang}/user/${author?._id}`}>
-          <Image
+          <img
             src={author?.image}
             height={48}
             width={48}

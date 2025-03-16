@@ -70,12 +70,10 @@ const page = async ({
               href={`/${lang}/user/${post?.author?._id}`}
               className="flex gap-2 items-center mb-3"
             >
-              <Image
+              <img
                 src={post.author.image}
                 alt="avatar"
-                width={64}
-                height={64}
-                className="rounded-full drop-shadow-lg"
+                className="rounded-full drop-shadow-lg w-12 h-12"
               />
 
               <div>
