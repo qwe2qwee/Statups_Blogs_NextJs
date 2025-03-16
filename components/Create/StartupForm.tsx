@@ -41,6 +41,12 @@ type TranslationStructure = {
   unexpectedError: TranslationSection;
 };
 
+type ActionState = {
+  error?: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+  _id?: string;
+};
+
 type Translations = {
   en: TranslationStructure;
   ar: TranslationStructure;
@@ -121,7 +127,10 @@ const StartupForm = ({ lang }: { lang: "ar" | "en" }) => {
 
   const t = translation[lang]; // Make sure lang is passed as a prop
 
-  const handleFormSubmit = async (prevState: any, formData: FormData) => {
+  const handleFormSubmit = async (
+    prevState: ActionState,
+    formData: FormData
+  ) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -132,7 +141,7 @@ const StartupForm = ({ lang }: { lang: "ar" | "en" }) => {
       };
 
       await formSchema.parseAsync(formValues);
-      const result = await createPitch(prevState, formData, pitch);
+      const result = await createPitch(formData, pitch);
 
       if (result.status == "SUCCESS") {
         toast.success(
@@ -196,7 +205,7 @@ const StartupForm = ({ lang }: { lang: "ar" | "en" }) => {
   const [state, formAction, isPending] = useActionState(handleFormSubmit, {
     error: "",
     status: "INITIAL",
-  });
+  } satisfies ActionState);
 
   console.log(state);
 
