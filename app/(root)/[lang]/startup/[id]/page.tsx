@@ -16,6 +16,23 @@ export const experimental_ppr = true;
 
 const md = markdownit();
 
+type Translations = {
+  en: {
+    pitchDetails: string;
+    noDetails: string;
+    category: string;
+    by: string;
+    avatarAlt: string;
+  };
+  ar: {
+    pitchDetails: string;
+    noDetails: string;
+    category: string;
+    by: string;
+    avatarAlt: string;
+  };
+};
+
 const translations = {
   en: {
     pitchDetails: "Pitch Details",
@@ -31,11 +48,11 @@ const translations = {
     by: "بواسطة",
     avatarAlt: "الصورة الرمزية",
   },
-} as any;
+} as Translations;
 const page = async ({
   params,
 }: {
-  params: Promise<{ id: string; lang: string }>;
+  params: Promise<{ id: string; lang: "en" | "ar" }>;
 }) => {
   const id = (await params)?.id;
 

@@ -7,15 +7,22 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Session } from "next-auth";
 
-// Type definitions for better type safety
-interface TranslationKeys {
-  create: string;
-  login: string;
-  logout: string;
-  loading: string;
-}
+type Translations = {
+  en: {
+    create: string;
+    login: string;
+    logout: string;
+    loading: string;
+  };
+  ar: {
+    create: string;
+    login: string;
+    logout: string;
+    loading: string;
+  };
+};
 
-const translations: Record<"en" | "ar", TranslationKeys> = {
+const translations: Translations = {
   en: {
     create: "Create",
     login: "Login",
@@ -40,8 +47,6 @@ const NavbarButtons = ({
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const t = translations[lang];
-
-  console.log(session?.id);
 
   const handleSignOut = async () => {
     setLoading(true);

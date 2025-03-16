@@ -9,6 +9,32 @@ import React, { Suspense } from "react";
 
 export const experimental_ppr = true;
 
+type Translations = {
+  en: {
+    yourStartups: string;
+    allStartups: string;
+    altProfile: string;
+  };
+  ar: {
+    yourStartups: string;
+    allStartups: string;
+    altProfile: string;
+  };
+};
+
+const translations: Translations = {
+  en: {
+    yourStartups: "Your Startups",
+    allStartups: "All Startups",
+    altProfile: "Profile picture of",
+  },
+  ar: {
+    yourStartups: "مشاريعك",
+    allStartups: "جميع المشاريع",
+    altProfile: "صورة الملف الشخصي لـ",
+  },
+};
+
 const page = async ({
   params,
 }: {
@@ -18,6 +44,8 @@ const page = async ({
   const lang = (await params)?.lang;
 
   const session = await auth();
+
+  const t = translations[lang];
 
   const user = await client.fetch(AUTHOR_BY_ID_QUERY, { id });
 
@@ -35,7 +63,7 @@ const page = async ({
 
           <Image
             src={user.image}
-            alt={user.name}
+            alt={t.altProfile}
             width={220}
             height={220}
             className="profile_image"
@@ -49,7 +77,7 @@ const page = async ({
 
         <div className="flex-1 flex-col gap-5 lg:-mt-5">
           <p className="text-30-bold">
-            {session?.id === id ? "Your" : "All"} Startups
+            {session?.id === id ? t.yourStartups : t.allStartups}
           </p>
           <ul className="card_grid-sm">
             <Suspense fallback={<StartupCardSkeleton />}>

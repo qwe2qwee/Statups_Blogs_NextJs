@@ -4,7 +4,16 @@ import SearchFormReset from "./SearchFormReset";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SearchForm = ({ query, lang }: { query?: string; lang: string }) => {
+const SearchForm = ({ query, lang }: { query?: string; lang: "en" | "ar" }) => {
+  type Translations = {
+    en: {
+      placeholder: string;
+    };
+    ar: {
+      placeholder: string;
+    };
+  };
+
   const translations = {
     en: {
       placeholder: "Search Startups",
@@ -12,7 +21,7 @@ const SearchForm = ({ query, lang }: { query?: string; lang: string }) => {
     ar: {
       placeholder: "ابحث عن المشاريع الناشئة",
     },
-  } as any;
+  } as Translations;
 
   const t = translations[lang];
 

@@ -12,7 +12,42 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { createPitch } from "@/lib/actions";
 
-const translation = {
+type TranslationSection = {
+  title: string;
+  description: string;
+};
+
+type LabelTranslations = {
+  title: string;
+  description: string;
+  category: string;
+  link: string;
+  pitch: string;
+};
+
+type PlaceholderTranslations = LabelTranslations;
+
+type ButtonTranslations = {
+  submit: string;
+  submitting: string;
+};
+
+type TranslationStructure = {
+  label: LabelTranslations;
+  placeholder: PlaceholderTranslations;
+  button: ButtonTranslations;
+  success: TranslationSection;
+  validationError: TranslationSection;
+  unexpectedError: TranslationSection;
+};
+
+type Translations = {
+  en: TranslationStructure;
+  ar: TranslationStructure;
+};
+
+// ✅ Assign Type to Your Translation Object
+const translation: Translations = {
   en: {
     label: {
       title: "Title",

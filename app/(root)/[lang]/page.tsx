@@ -19,13 +19,30 @@ export default async function Home({
     query: STARTUPS_QUERY,
     params: paramss,
   });
+
+  type Translations = {
+    en: {
+      heading: string;
+      subHeading: string;
+      allStartups: string;
+      noPosts: string;
+      results: (query: string) => string;
+    };
+    ar: {
+      heading: string;
+      subHeading: string;
+      allStartups: string;
+      noPosts: string;
+      results: (query: string) => string;
+    };
+  };
   // Translations directly in the component
-  const translation = {
+  const translation: Translations = {
     en: {
       heading: "Pitch your startup,\nconnect with entrepreneurs",
       subHeading:
         "Submit Ideas, Vote on Pitches, and Get Noticed in Virtual Competitions.",
-      results: (query: any) => `Results for "${query}"`,
+      results: (query: string) => `Results for "${query}"`,
       allStartups: "All Startups",
       noPosts: "No posts found.",
     },
@@ -33,11 +50,11 @@ export default async function Home({
       heading: "قدّم مشروعك الناشئ،\nوتواصل مع رواد الأعمال",
       subHeading:
         "قدّم الأفكار، صوّت على العروض، واحصل على الانتباه في المسابقات الافتراضية.",
-      results: (query: any) => `نتائج البحث عن "${query}"`,
+      results: (query: string) => `نتائج البحث عن "${query}"`,
       allStartups: "جميع المشاريع الناشئة",
       noPosts: "لم يتم العثور على منشورات.",
     },
-  } as any;
+  };
 
   const t = translation[lang]; // Changed from translation["en"] to use the lang variable
   return (

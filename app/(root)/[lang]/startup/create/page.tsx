@@ -2,7 +2,16 @@ import { auth } from "@/auth";
 import StartupForm from "@/components/Create/StartupForm";
 import { redirect } from "next/navigation";
 
-const translations = {
+type Translations = {
+  en: {
+    heading: string;
+  };
+  ar: {
+    heading: string;
+  };
+};
+
+const translations: Translations = {
   en: {
     heading: "Submit Your Startup",
   },
