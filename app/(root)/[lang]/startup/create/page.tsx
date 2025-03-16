@@ -20,9 +20,9 @@ const translations: Translations = {
   },
 };
 
-const Page = async ({ params }: { params: { lang: "en" | "ar" } }) => {
+const Page = async ({ params }: { params: Promise<{ lang: "en" | "ar" }> }) => {
   const session = await auth();
-  const lang = params.lang; // Directly access params without await
+  const lang = (await params)?.lang;
 
   if (!session) redirect(`/${lang}/`);
 
